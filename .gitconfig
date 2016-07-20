@@ -2,3 +2,5 @@
 	name = tmrtkn
 	email = toni.martikainen@gmail.com
 	username = tmrtkn
+[color]
+	ui = auto
