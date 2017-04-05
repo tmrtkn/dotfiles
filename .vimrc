@@ -28,14 +28,17 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'user/L9', {'name': 'newL9'}
 
 Plugin 'bling/vim-airline'
-
 Plugin 'szw/vim-ctrlspace'
-
 Plugin 'altercation/vim-colors-solarized'
 
-
-
-
+" Clojure plugins start
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'tpope/vim-surround'
+Plugin 'luochen1990/rainbow'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-salve'
+" Clojure plugins end
 
 
 " All of your Plugins must be added before the following line
@@ -110,6 +113,26 @@ set history=100
 "  hi Normal ctermbg=NONE
 " endif
 
+" Reload vimrc any time it is changed
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has ('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+" Let mapleader be comma
+let mapleader=","
 
 map <leader>rr :source ~/.vimrc<CR>
+
+" Own Mappings
+""""""""""""""
+
+nnoremap <Leader>w :w!<Cr>
+
+inoremap jk <esc>
+
+nnoremap <Tab> <Esc>
+vnoremap <Tab> <Esc>gV
+onoremap <Tab> <Esc>`^
+inoremap <Leader><Tab> <Tab>
 
