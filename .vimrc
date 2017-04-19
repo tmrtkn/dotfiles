@@ -30,6 +30,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'szw/vim-ctrlspace'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'kien/ctrlp.vim'
 
 " Clojure plugins start
 Plugin 'guns/vim-sexp'
