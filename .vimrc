@@ -5,71 +5,26 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-
-Plugin 'bling/vim-airline'
-Plugin 'szw/vim-ctrlspace'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
-
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
 " Clojure plugins start
-Plugin 'guns/vim-sexp'
-Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-Plugin 'tpope/vim-surround'
-Plugin 'luochen1990/rainbow'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-salve'
+"Plugin 'guns/vim-sexp'
+"Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+"Plugin 'tpope/vim-surround'
+"Plugin 'luochen1990/rainbow'
+"Plugin 'tpope/vim-fireplace'
+"Plugin 'tpope/vim-salve'
 " Clojure plugins end
 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-" A minimal vimrc for new vim users to start with.
-"
-" Referenced here: http://vimuniversity.com/samples/your-first-vimrc-should-be-nearly-empty
-"
-" Original Author:	     Bram Moolenaar <Bram@vim.org>
-" Made more minimal by:  Ben Orenstein
-" Modified by :          Ben McCormick
-" Last change:	         2014 June 8
-"
-" To use it, copy it to
-"  for Unix based systems (including OSX and Linux):  ~/.vimrc
-"  for Windows :  $VIM\_vimrc
-"
-"  If you don't understand a setting in here, just type ':h setting'.
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -85,9 +40,11 @@ syntax on
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
-" " when indenting with '>', use 4 spaces width
+" backspace deletes as many spaces as the tab adds
+set softtabstop=4
+" when indenting with '>', use 4 spaces width
 set shiftwidth=4
-" " On pressing tab, insert 4 spaces
+" On pressing tab, insert 4 spaces
 set expandtab
 
 
@@ -118,17 +75,20 @@ augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has ('gui_running') | so $MYGVIMRC | endif
 augroup END
+" No need for sourcing .vimrc because the augroup above handles the reloading
+" map <leader>rr :source ~/.vimrc<CR>
 
 " Let mapleader be comma
 let mapleader=","
 
-map <leader>rr :source ~/.vimrc<CR>
 
 " Own Mappings
 """"""""""""""
-
+nnoremap <Leader>q :q<Cr>
 nnoremap <Leader>w :w!<Cr>
 
+" In insert mode, it is quicker to exit to the normal mode
+" just by quickly typing 'jk'
 inoremap jk <esc>
 
 nnoremap <Tab> <Esc>
@@ -136,3 +96,29 @@ vnoremap <Tab> <Esc>gV
 onoremap <Tab> <Esc>`^
 inoremap <Leader><Tab> <Tab>
 
+" Swap colon and semicolon to avoid often unnecessary shift key
+noremap ; :
+noremap : ;
+
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
+" Alwas show the status line
+set laststatus=2
+
+" Status line testing
+set statusline=   " clear the statusline for when vimrc is reloaded
+set statusline+=%-3.3n\                      " buffer number
+set statusline+=%F\                          " file name
+set statusline+=%h%m%r%w                     " flags
+set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
+set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
+set statusline+=%{&fileformat}]              " file format
+set statusline+=%q%k
+set statusline+=%=                           " right align
+set statusline+=%-16(%{exists('g:loaded_fugitive')?fugitive#statusline():''}\%)
+set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
+set statusline+=%b,0x%-8B\                   " current char
+set statusline+=%-14.(%c%V,%l/%L%)\ %<%P        " offset
