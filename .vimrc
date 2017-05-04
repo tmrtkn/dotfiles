@@ -13,12 +13,16 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 
+Plugin 'tpope/vim-surround'
+Plugin 'luochen1990/rainbow'
+
+" Plugin for inserting brackets, parentheses, quotes, etc in pairs
+Plugin 'jiangmiao/auto-pairs'
+
 " Clojure plugins start
-"Plugin 'guns/vim-sexp'
-"Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-"Plugin 'tpope/vim-surround'
-"Plugin 'luochen1990/rainbow'
-"Plugin 'tpope/vim-fireplace'
+" Plugin 'guns/vim-sexp'
+" Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+" Plugin 'tpope/vim-fireplace'
 "Plugin 'tpope/vim-salve'
 " Clojure plugins end
 
@@ -26,6 +30,9 @@ Plugin 'tpope/vim-fugitive'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" Rainbow plugin enable
+let g:rainbow_active = 1
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -106,8 +113,17 @@ nmap <leader>l :set list!<CR>
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
-" Alwas show the status line
+" Always show the status line
 set laststatus=2
+
+" set search case to a good configuration http://vim.wikia.com/wiki/Searching 
+set ignorecase
+set smartcase
+
+" search characters as they're entered
+set incsearch
+" don't highlight all search matches
+set nohlsearch
 
 " Status line testing
 set statusline=   " clear the statusline for when vimrc is reloaded
