@@ -1,5 +1,3 @@
-" Vim configuration file
-
 set nocompatible              " be iMproved, required
 set background=dark           " Set the background so that the colours are more visible on black background
 filetype off                  " required
@@ -14,6 +12,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
+
 " Clojure plugins start
 "Plugin 'guns/vim-sexp'
 "Plugin 'tpope/vim-sexp-mappings-for-regular-people'
@@ -118,7 +117,6 @@ set statusline+=%h%m%r%w                     " flags
 set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
 set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
 set statusline+=%{&fileformat}]              " file format
-set statusline+=%q%k
 set statusline+=%=                           " right align
 set statusline+=%-16(%{exists('g:loaded_fugitive')?fugitive#statusline():''}\%)
 set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
