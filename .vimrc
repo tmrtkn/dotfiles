@@ -1,3 +1,5 @@
+" Vim configuration file
+
 set nocompatible              " be iMproved, required
 set background=dark           " Set the background so that the colours are more visible on black background
 filetype off                  " required
