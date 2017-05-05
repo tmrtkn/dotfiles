@@ -1,21 +1,28 @@
+" vim: foldmethod=marker
+" vim: foldcolumn=3
+
 set nocompatible              " be iMproved, required
 set background=dark           " Set the background so that the colours are more visible on black background
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
+" Vundle plugin settings  {{{1
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" Plugins {{{2
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
+Plugin 'sjl/gundo.vim'
 
+" Git related
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+" Parentheses (and such) handling
 Plugin 'tpope/vim-surround'
 Plugin 'luochen1990/rainbow'
-
 " Plugin for inserting brackets, parentheses, quotes, etc in pairs
 Plugin 'jiangmiao/auto-pairs'
 
@@ -26,10 +33,9 @@ Plugin 'jiangmiao/auto-pairs'
 "Plugin 'tpope/vim-salve'
 " Clojure plugins end
 
-
-" All of your Plugins must be added before the following line
+" All of your Plugins must be added before the following line }}}
 call vundle#end()            " required
-filetype plugin indent on    " required
+filetype plugin indent on    " required }}}
 
 " Rainbow plugin enable
 let g:rainbow_active = 1
@@ -46,6 +52,7 @@ syntax on
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
+
 " show existing tab with 4 spaces width
 set tabstop=4
 " backspace deletes as many spaces as the tab adds
@@ -55,15 +62,11 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
-
 " Show line numbers
 set number
 
 " Allow hidden buffers, don't limit to 1 file per window/split
 set hidden
-
-" Set tabs to spaces
-set et
 
 " By default Vim saves your last 8 commands. We can handle more.
 set history=100
@@ -83,14 +86,16 @@ augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has ('gui_running') | so $MYGVIMRC | endif
 augroup END
-" No need for sourcing .vimrc because the augroup above handles the reloading
-" map <leader>rr :source ~/.vimrc<CR>
 
 " Let mapleader be comma
 let mapleader=","
 
+set foldmethod=syntax
 
-" Own Mappings
+" If using list, use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
+" Own Mappings {{{1
 """"""""""""""
 nnoremap <Leader>q :q<Cr>
 nnoremap <Leader>w :w!<Cr>
@@ -108,14 +113,16 @@ inoremap <Leader><Tab> <Tab>
 noremap ; :
 noremap : ;
 
+" Space to toggle folds
+nnoremap <Space> za
+vnoremap <Space> za
+
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
-" Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
 
-" Always show the status line
-set laststatus=2
+" Own mappings end }}}
 
+" Search options {{{1
 " set search case to a good configuration http://vim.wikia.com/wiki/Searching 
 set ignorecase
 set smartcase
@@ -125,7 +132,11 @@ set incsearch
 " don't highlight all search matches
 set nohlsearch
 
-" Status line testing
+" Status line {{{1
+" Always show the status line
+set laststatus=2
+
+" Status line itself
 set statusline=   " clear the statusline for when vimrc is reloaded
 set statusline+=%-3.3n\                      " buffer number
 set statusline+=%F\                          " file name
