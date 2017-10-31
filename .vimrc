@@ -30,7 +30,24 @@ Plugin 'jiangmiao/auto-pairs'
 " Plugin 'guns/vim-sexp'
 " Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 " Plugin 'tpope/vim-fireplace'
-"Plugin 'tpope/vim-salve'
+" Plugin 'tpope/vim-salve'
+
+" Python Plugins
+Plugin 'tmhedberg/SimplyFold'
+Plugin 'vim-scripts/indentpython.vim'
+
+" Autocomplete
+Plugin 'Valloric/YouCompleteMe'
+
+" syntax checking
+Plugin 'scroloose/syntastic'
+
+" PEP8 checking
+Plugin 'nvie/vim-flake8'
+
+" Color scheme
+Plugin 'jnurmine/Zenburn'
+
 " Clojure plugins end
 
 " All of your Plugins must be added before the following line }}}
@@ -71,6 +88,8 @@ set hidden
 " By default Vim saves your last 8 commands. We can handle more.
 set history=100
 
+colorscheme zenburn
+
 " Vim UI {
 "if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
 "  let g:solarized_termcolors=256
@@ -87,10 +106,35 @@ augroup myvimrc
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has ('gui_running') | so $MYGVIMRC | endif
 augroup END
 
+" Python stuff starts 
+" Python related settings
+au BufNewFile,BufRead *.py;
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+" Python: flag unnecessary whitespace
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+let python_highligh_all=1
+
+" ----- Python stuff ends
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
 " Let mapleader be comma
 let mapleader=","
 
-set foldmethod=syntax
+set foldmethod=indent
+" set foldmethod=syntax
 
 " If using list, use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
@@ -116,6 +160,13 @@ noremap : ;
 " Space to toggle folds
 nnoremap <Space> za
 vnoremap <Space> za
+
+" Split navigations
+" 
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
