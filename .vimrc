@@ -33,14 +33,14 @@ Plugin 'jiangmiao/auto-pairs'
 " Plugin 'tpope/vim-salve'
 
 " Python Plugins
-Plugin 'tmhedberg/SimplyFold'
+Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 
 " Autocomplete
 Plugin 'Valloric/YouCompleteMe'
 
 " syntax checking
-Plugin 'scroloose/syntastic'
+Plugin 'vim-syntastic/syntastic'
 
 " PEP8 checking
 Plugin 'nvie/vim-flake8'
@@ -49,6 +49,11 @@ Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
 
 " Clojure plugins end
+
+" Testing section
+" Notes
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 
 " All of your Plugins must be added before the following line }}}
 call vundle#end()            " required
