@@ -176,6 +176,10 @@ nnoremap <C-H> <C-W><C-H>
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
 
+" Easier way to scroll buffers
+nnoremap <Home> :bprevious<CR>
+nnoremap <End> :bnext<CR>
+
 " Own mappings end }}}
 
 " Search options {{{1
