@@ -17,6 +17,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-commentary'
 Plugin 'sjl/gundo.vim'
 
+" tmux integration
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'benmills/vimux'
+
 " Git related
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
