@@ -1,0 +1,15 @@
+[user]
+	name = martikat
+	email = toni.martikainen@solita.fi
+	username = martikat
+[color]
+    ui = auto
+[push]
+    default = simple
+[alias]
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    df = diff --color --color-words --abbrev
+    
+    # Show the diff between the latest commit and the current state
+    ; d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+    d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"

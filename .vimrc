@@ -141,12 +141,15 @@ let python_highligh_all=1
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-
 " Let mapleader be comma
 let mapleader=","
 
 set foldmethod=indent
 " set foldmethod=syntax
+" Note, perl automatically sets foldmethod in the syntax file
+" autocmd BufRead *.c,*.cpp,*.vim,*.xml,*.html,*.xhtml,.vimrc setlocal foldmethod=syntax
+autocmd BufRead * normal zR
+
 
 " If using list, use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
