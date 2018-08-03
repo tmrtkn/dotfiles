@@ -5,25 +5,26 @@ set nocompatible              " be iMproved, required
 set background=dark           " Set the background so that the colours are more visible on black background
 filetype off                  " required
 
-" Vundle plugin settings  {{{1
+" Vundle plugin settings  
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" Plugins {{{2
+" Plugins {{{1
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-commentary'
-Plugin 'sjl/gundo.vim'
+" Plugin 'sjl/gundo.vim'
 
 " tmux integration
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
 
 " Git related
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+
 " Parentheses (and such) handling
 Plugin 'tpope/vim-surround'
 Plugin 'luochen1990/rainbow'
@@ -37,8 +38,8 @@ Plugin 'jiangmiao/auto-pairs'
 " Plugin 'tpope/vim-salve'
 
 " Python Plugins
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
+" Plugin 'tmhedberg/SimpylFold'
+" Plugin 'vim-scripts/indentpython.vim'
 
 " Autocomplete
 Plugin 'Valloric/YouCompleteMe'
@@ -47,10 +48,10 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 
 " PEP8 checking
-Plugin 'nvie/vim-flake8'
+" Plugin 'nvie/vim-flake8'
 
 " Color scheme
-Plugin 'jnurmine/Zenburn'
+" Plugin 'jnurmine/Zenburn'
 
 " Clojure plugins end
 
@@ -59,12 +60,16 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 
-Plugin 'majutsushi/tagbar'
+" Plugin 'majutsushi/tagbar'
+
+
+" Ansible stuff
+" Plugin 'pearofducks/ansible-vim'
 
 
 " All of your Plugins must be added before the following line }}}
 call vundle#end()            " required
-filetype plugin indent on    " required }}}
+filetype plugin indent on    " required
 
 " Rainbow plugin enable
 let g:rainbow_active = 1
@@ -77,7 +82,7 @@ set nocompatible
 set backspace=indent,eol,start
 
 " Switch syntax highlighting on
-syntax on
+syntax enable
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
@@ -100,7 +105,8 @@ set hidden
 " By default Vim saves your last 8 commands. We can handle more.
 set history=100
 
-colorscheme zenburn
+colorscheme solarized
+
 
 " Vim UI {
 "if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
