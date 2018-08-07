@@ -196,6 +196,12 @@ nmap <leader>l :set list!<CR>
 nnoremap <Home> :bprevious<CR>
 nnoremap <End> :bnext<CR>
 
+" Toggle pastemode by using <F2>
+" http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
 " Own mappings end }}}
 
 " Search options {{{1
@@ -207,6 +213,9 @@ set smartcase
 set incsearch
 " don't highlight all search matches
 set nohlsearch
+
+
+
 
 " Status line {{{1
 " Always show the status line
