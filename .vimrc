@@ -156,6 +156,9 @@ set foldmethod=indent
 " autocmd BufRead *.c,*.cpp,*.vim,*.xml,*.html,*.xhtml,.vimrc setlocal foldmethod=syntax
 autocmd BufRead * normal zR
 
+" Autoformat XML files
+au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
+
 
 " If using list, use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
@@ -201,6 +204,8 @@ nnoremap <End> :bnext<CR>
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
+
+nnoremap <F3> :%! xmllint --format -<CR>
 
 " Own mappings end }}}
 
