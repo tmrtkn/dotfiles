@@ -1,6 +1,3 @@
-" vim: foldmethod=marker
-" vim: foldcolumn=3
-
 set nocompatible              " be iMproved, required
 set background=dark           " Set the background so that the colours are more visible on black background
 filetype off                  " required
@@ -13,7 +10,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-commentary'
 " Plugin 'sjl/gundo.vim'
 
@@ -23,7 +19,6 @@ Plugin 'benmills/vimux'
 
 " Git related
 " Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
 
 " Parentheses (and such) handling
 Plugin 'tpope/vim-surround'
@@ -51,7 +46,9 @@ Plugin 'vim-syntastic/syntastic'
 " Plugin 'nvie/vim-flake8'
 
 " Color scheme
+" Plugin 'altercation/vim-colors-solarized'
 " Plugin 'jnurmine/Zenburn'
+Plugin 'morhetz/gruvbox'
 
 " Clojure plugins end
 
@@ -105,8 +102,10 @@ set hidden
 " By default Vim saves your last 8 commands. We can handle more.
 set history=100
 
-colorscheme solarized
-
+" colorscheme solarized
+" colorscheme Zenburn
+colorscheme gruvbox
+let g:gruvbox_contrast_dark="soft"
 
 " Vim UI {
 "if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
@@ -154,7 +153,7 @@ set foldmethod=indent
 " set foldmethod=syntax
 " Note, perl automatically sets foldmethod in the syntax file
 " autocmd BufRead *.c,*.cpp,*.vim,*.xml,*.html,*.xhtml,.vimrc setlocal foldmethod=syntax
-autocmd BufRead * normal zR
+" autocmd BufRead * normal zR
 
 " Autoformat XML files
 au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
@@ -162,6 +161,8 @@ au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
 
 " If using list, use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
+
+let g:netrw_altv=1
 
 " Own Mappings {{{1
 """"""""""""""
