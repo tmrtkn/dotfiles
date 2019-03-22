@@ -62,7 +62,7 @@ Plugin 'xolox/vim-notes'
 
 " Ansible stuff
 " Plugin 'pearofducks/ansible-vim'
-
+Plugin 'chase/vim-ansible-yaml'
 
 " All of your Plugins must be added before the following line }}}
 call vundle#end()            " required
@@ -102,7 +102,7 @@ set hidden
 " By default Vim saves your last 8 commands. We can handle more.
 set history=100
 
-" colorscheme solarized
+" colorschem solarized
 " colorscheme Zenburn
 colorscheme gruvbox
 let g:gruvbox_contrast_dark="soft"
@@ -149,7 +149,7 @@ map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Let mapleader be comma
 let mapleader=","
 
-set foldmethod=indent
+" set foldmethod=indent
 " set foldmethod=syntax
 " Note, perl automatically sets foldmethod in the syntax file
 " autocmd BufRead *.c,*.cpp,*.vim,*.xml,*.html,*.xhtml,.vimrc setlocal foldmethod=syntax
@@ -157,6 +157,10 @@ set foldmethod=indent
 
 " Autoformat XML files
 au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
+
+" YAML specific indentations: https://stackoverflow.com/a/37488992
+autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
+
 
 
 " If using list, use the same symbols as TextMate for tabstops and EOLs
