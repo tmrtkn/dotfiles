@@ -3,7 +3,7 @@
 SCRIPT=$(readlink -f "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT")
 
-FILES=(.bashrc .vimrc .gitconfig .tmux.conf .xinitrc .Xresources)
+FILES=(.bashrc .vimrc .gitconfig .tmux.conf .xinitrc .Xresources .toprc)
 
 for file in ${FILES[@]}; do
     if [ -f $file ]; then
