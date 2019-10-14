@@ -25,7 +25,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'luochen1990/rainbow'
 " Plugin for inserting brackets, parentheses, quotes, etc in pairs
 Plugin 'jiangmiao/auto-pairs'
-
 " Clojure plugins start
 " Plugin 'guns/vim-sexp'
 " Plugin 'tpope/vim-sexp-mappings-for-regular-people'
@@ -62,7 +61,8 @@ Plugin 'xolox/vim-notes'
 
 " Ansible stuff
 " Plugin 'pearofducks/ansible-vim'
-Plugin 'chase/vim-ansible-yaml'
+" Plugin 'chase/vim-ansible-yaml'
+Plugin 'mrk21/yaml-vim'
 
 " All of your Plugins must be added before the following line }}}
 call vundle#end()            " required
@@ -161,7 +161,9 @@ au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
 " YAML specific indentations: https://stackoverflow.com/a/37488992
 autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
 
-
+" https://lornajane.net/posts/2018/vim-settings-for-working-with-yaml
+" add yaml stuffs
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 
 " If using list, use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
