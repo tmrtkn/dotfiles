@@ -9,14 +9,16 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'ctrlpvim/ctrlp.vim'
+"   Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-commentary'
 " Plugin 'sjl/gundo.vim'
 
 " tmux integration
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
-
+ 
 " Git related
 " Plugin 'tpope/vim-fugitive'
 
@@ -174,6 +176,7 @@ let g:netrw_altv=1
 """"""""""""""
 nnoremap <Leader>q :q<Cr>
 nnoremap <Leader>w :w!<Cr>
+nnoremap <Leader>bd :bd<Cr>
 
 " In insert mode, it is quicker to exit to the normal mode
 " just by quickly typing 'jk'
@@ -191,6 +194,13 @@ noremap : ;
 " Space to toggle folds
 nnoremap <Space> za
 vnoremap <Space> za
+
+" Jumpt specific file (fzf)
+nnoremap <C-P> :Files<CR>
+" Search whole project
+nnoremap \ :Ag<Space>
+" nnoremap \ :Rg<Space>
+
 
 " Split navigations
 " 
@@ -226,8 +236,8 @@ set incsearch
 " don't highlight all search matches
 set nohlsearch
 
-
-
+" No autmatic folding, please...
+set nofoldenable
 
 " Status line {{{1
 " Always show the status line
