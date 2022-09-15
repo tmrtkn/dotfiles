@@ -31,4 +31,7 @@ fi
 mkdir -p ~/.config/
 ln -s $SCRIPT_DIR/.config/fontconfig ~/.config/fontconfig
 
+mkdir -p ~/.config/
+ln -s $SCRIPT_DIR/.config/nvim ~/.config/nvim
+
 exit 0
