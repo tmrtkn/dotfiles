@@ -37,10 +37,26 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
+  local wrap = function(func)
+    local opts = {
+      symbols = {
+        "function",
+        "method"
+      }
+    }
+    return function()
+      func(opts)
+    end
+  end
+  -- https://github.com/nvim-telescope/telescope.nvim/issues/837#issuecomment-1093782003
+  vim.keymap.set('n', '<leader>o', wrap(require('telescope.builtin').lsp_document_symbols), { desc = '[O] Document Functions' })
+
+
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  nmap('gk', vim.lsp.buf.signature_help, 'Signature Documentation')
   -- nmap('<C-K>', vim.lsp.buf.signature_help, 'Signature Documentation')
-  nmap('<M-K>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  -- nmap('<M-K>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
