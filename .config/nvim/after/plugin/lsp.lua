@@ -9,6 +9,10 @@ lsp.ensure_installed({
   'sumneko_lua',
 })
 
+-- Publish the lsp diagnostics virtually, meaning on the line where the issue exists
+-- https://github.com/folke/trouble.nvim/issues/171#issuecomment-1356622735
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = true })
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
