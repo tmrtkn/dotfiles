@@ -94,27 +94,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-local cursorhighlight_group = vim.api.nvim_create_augroup('CursorHightlight', { clear = true })
-vim.api.nvim_create_autocmd('CursorHold', {
-  callback = function()
-    vim.lsp.buf.document_highlight()
-  end,
-  group = cursorhighlight_group,
-  pattern = '<buffer>',
-})
-vim.api.nvim_create_autocmd('CursorHoldI', {
-  callback = function()
-    vim.lsp.buf.document_highlight()
-  end,
-  group = cursorhighlight_group,
-  pattern = '<buffer>',
-})
-
-vim.api.nvim_create_autocmd('CursorMoved', {
-  callback = function()
-    vim.lsp.buf.clear_references()
-  end,
-  group = cursorhighlight_group,
-  pattern = '<buffer>',
-})
 
