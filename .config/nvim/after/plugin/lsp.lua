@@ -131,6 +131,13 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Setup mason so it can manage external tooling
 require('mason').setup()
 
+-- This is required to happen after the mason setup
+require('mason-nvim-dap').setup({
+  automatic_setup = true
+})
+
+require('mason-nvim-dap').setup_handlers()
+
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 

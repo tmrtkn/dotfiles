@@ -9,10 +9,20 @@ require('telescope').setup {
       },
     },
   },
+  extensions = {
+    dap = {
+    }
+  }
 }
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+pcall(require('telescope').load_extension, 'dap')
+
+
+
+-- pcall(require('telescope').load_extension, 'dap')
+
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })

@@ -1,4 +1,5 @@
 -- Install packer
+
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
 local is_bootstrap = false
@@ -85,6 +86,7 @@ return require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
+  use 'nvim-telescope/telescope-dap.nvimt'
 
   use {
     "folke/trouble.nvim",
@@ -112,6 +114,14 @@ return require('packer').startup(function(use)
   }
 
   use 'mfussenegger/nvim-dap'
+  use 'jayp0521/mason-nvim-dap.nvim'
+  use 'rcarriga/nvim-dap-ui'
+  use 'antoinemadec/FixCursorHold.nvim'
+  use 'nvim-neotest/neotest'
+  use 'theHamsta/nvim-dap-virtual-text'
+  -- use 'mxsdev/nvim-dap-vscode-js'
+
+  use { 'shortcuts/no-neck-pain.nvim', tag = "*" }
 
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
