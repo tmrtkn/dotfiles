@@ -74,3 +74,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 
+vim.keymap.set("n", "<Up>", "<C-W>+")
+vim.keymap.set("n", "<Down>", "<C-W>-")
+vim.keymap.set("n", "<Left>", "<C-W><")
+vim.keymap.set("n", "<Right>", "<C-W>>")
