@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/martikat/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["leap.nvim"] = {
+    loaded = true,
+    path = "/home/martikat/.local/share/nvim/site/pack/packer/start/leap.nvim",
+    url = "https://github.com/ggandor/leap.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/home/martikat/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
@@ -164,10 +169,16 @@ _G.packer_plugins = {
     path = "/home/martikat/.local/share/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
   },
-  neotest = {
+  neorg = {
+    config = { "\27LJ\2\2¯\3\0\0\6\0\24\0!6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\22\0005\2\3\0004\3\0\0=\3\4\0024\3\0\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\0025\3\r\0005\4\v\0005\5\n\0=\5\f\4=\4\b\3=\3\14\0025\3\16\0005\4\15\0=\4\b\3=\3\17\0025\3\19\0005\4\18\0=\4\b\3=\3\20\0024\3\0\0=\3\21\2=\2\23\1B\0\2\1K\0\1\0\tload\1\0\0 core.integrations.telescope\18core.keybinds\1\0\0\1\0\1\17neorg_leader\6,\22core.norg.journal\1\0\0\1\0\1\14workspace\nnotes\21core.norg.dirman\1\0\0\15workspaces\1\0\0\1\0\2\twork\17~/notes/work\nnotes\17~/notes/home\25core.norg.completion\vconfig\1\0\0\1\0\1\vengine\rnvim-cmp\24core.norg.concealer\18core.defaults\1\0\0\nsetup\nneorg\frequire\0" },
     loaded = true,
-    path = "/home/martikat/.local/share/nvim/site/pack/packer/start/neotest",
-    url = "https://github.com/nvim-neotest/neotest"
+    path = "/home/martikat/.local/share/nvim/site/pack/packer/start/neorg",
+    url = "https://github.com/nvim-neorg/neorg"
+  },
+  ["neorg-telescope"] = {
+    loaded = true,
+    path = "/home/martikat/.local/share/nvim/site/pack/packer/start/neorg-telescope",
+    url = "https://github.com/nvim-neorg/neorg-telescope"
   },
   ["no-neck-pain.nvim"] = {
     loaded = true,
@@ -204,6 +215,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/martikat/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-test"] = {
+    loaded = true,
+    path = "/home/martikat/.local/share/nvim/site/pack/packer/start/nvim-test",
+    url = "https://github.com/klen/nvim-test"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -282,6 +298,11 @@ _G.packer_plugins = {
     path = "/home/martikat/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  ["vim-obsession"] = {
+    loaded = true,
+    path = "/home/martikat/.local/share/nvim/site/pack/packer/start/vim-obsession",
+    url = "https://github.com/tpope/vim-obsession"
+  },
   ["vim-rhubarb"] = {
     loaded = true,
     path = "/home/martikat/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
@@ -296,10 +317,19 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/martikat/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/home/martikat/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: neorg
+time([[Config for neorg]], true)
+try_loadstring("\27LJ\2\2¯\3\0\0\6\0\24\0!6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\22\0005\2\3\0004\3\0\0=\3\4\0024\3\0\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\0025\3\r\0005\4\v\0005\5\n\0=\5\f\4=\4\b\3=\3\14\0025\3\16\0005\4\15\0=\4\b\3=\3\17\0025\3\19\0005\4\18\0=\4\b\3=\3\20\0024\3\0\0=\3\21\2=\2\23\1B\0\2\1K\0\1\0\tload\1\0\0 core.integrations.telescope\18core.keybinds\1\0\0\1\0\1\17neorg_leader\6,\22core.norg.journal\1\0\0\1\0\1\14workspace\nnotes\21core.norg.dirman\1\0\0\15workspaces\1\0\0\1\0\2\twork\17~/notes/work\nnotes\17~/notes/home\25core.norg.completion\vconfig\1\0\0\1\0\1\vengine\rnvim-cmp\24core.norg.concealer\18core.defaults\1\0\0\nsetup\nneorg\frequire\0", "config", "neorg")
+time([[Config for neorg]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\0029\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")

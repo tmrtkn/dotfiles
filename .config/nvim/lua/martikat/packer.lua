@@ -86,7 +86,7 @@ return require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
-  use 'nvim-telescope/telescope-dap.nvimt'
+  use 'nvim-telescope/telescope-dap.nvim'
 
   use {
     "folke/trouble.nvim",
@@ -113,15 +113,89 @@ return require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
+  use 'ggandor/leap.nvim'
+
   use 'mfussenegger/nvim-dap'
   use 'jayp0521/mason-nvim-dap.nvim'
   use 'rcarriga/nvim-dap-ui'
   use 'antoinemadec/FixCursorHold.nvim'
-  use 'nvim-neotest/neotest'
+
+  -- use 'nvim-neotest/neotest'
+  -- use 'nvim-neotest/neotest-vim-test'
+  -- use 'vim-test/vim-test'
+  -- use 'adrigzr/neotest-mocha'
+  use 'klen/nvim-test'
+
+
   use 'theHamsta/nvim-dap-virtual-text'
+  -- use 'Pocco81/dap-buddy.nvim'
+  -- use 'Pocco81/DAPInstall.nvim'
   -- use 'mxsdev/nvim-dap-vscode-js'
+  -- use { 'microsoft/vscode-js-debug',
+  --   opt = true,
+  --   run = "npm install --legacy-peer-depts && npm run compile",
+  -- }
 
   use { 'shortcuts/no-neck-pain.nvim', tag = "*" }
+
+  use { "nvim-neorg/neorg",
+    run = ":Neorg sync-parsers",
+ --    config = function()
+ --      require('neorg').setup {
+	-- load = {
+	--   ["core.defaults"] = {}, -- Loads default behaviour
+	--   ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+	--   ["core.norg.completion"] = {
+	--     config = {
+	--       engine = 'nvim-cmp'
+	--     }
+	--   }, -- Adds Completion
+	--   -- ["core.presenter"] = {}, -- Adds the Powerpoint-like presenter functionality
+	--   ["core.norg.dirman"] = { -- Manages Neorg workspaces
+	--     config = {
+	--       workspaces = {
+	-- 	work = "~/notes/work",
+	-- 	notes = "~/notes/home",
+	--       },
+	--     },
+	--   },
+	--   ["core.norg.journal"] = {
+	--     config = {
+	--       workspace = "notes",
+	--     }
+	--   },
+	--   ["core.keybinds"] = {
+	--     config = {
+	--       neorg_leader=','
+	--     }
+	--   },
+	--   -- ["core.gtd.ui"] = {}, -- Getting Things Done
+	--   -- ["core.gtd.helpers"] = {},
+	--   -- ["core.gtd.queries"] = {},
+	--   -- ["core.neorgcmd"] = {},
+	--   -- ["core.gtd.base"] = {
+	--   --   config = {
+	--   --     workspace = "notes"
+	--   --   }
+	--   -- },
+	--   ["core.integrations.telescope"] = {
+	--   },
+	-- },
+ --      }
+ --    end,
+    requires = {
+      {
+	"nvim-lua/plenary.nvim",
+	opt = true
+      },
+      "nvim-neorg/neorg-telescope",
+    }
+  }
+
+  -- Nvim session saving with tmux
+  use 'tpope/vim-obsession'
+
+  use 'christoomey/vim-tmux-navigator'
 
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
