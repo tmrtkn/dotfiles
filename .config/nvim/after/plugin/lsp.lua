@@ -6,7 +6,8 @@ lsp.setup()
 lsp.ensure_installed({
   'tsserver',
   'eslint',
-  'sumneko_lua',
+  -- 'sumneko_lua',
+  'lsp_lua',
 })
 
 -- Publish the lsp diagnostics virtually, meaning on the line where the issue exists
@@ -16,7 +17,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -75,17 +76,40 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
 
-  local cursorhighlight_group = vim.api.nvim_create_augroup('CursorHightlight', { clear = true })
+-- if client.server.capabilities.documentHighlightProvider then
+
+
+  local cursorhighlight_group = vim.api.nvim_create_augroup('CursorHighlight', { clear = true })
   vim.api.nvim_create_autocmd('CursorHold', {
-    callback = function()
-      vim.lsp.buf.document_highlight()
+    -- callback = function()
+    --   vim.lsp.buf.document_highlight()
+    -- end,
+    callback = function(args)
+      local all_clients = vim.lsp.get_active_clients()
+      -- print('aaaaaa')
+      for i, val in pairs(all_clients) do
+        if val.server_capabilities.documentHighlightProvider then
+          -- print("True!")
+          vim.lsp.buf.document_highlight()
+        end
+      end
     end,
     group = cursorhighlight_group,
     pattern = '<buffer>',
   })
   vim.api.nvim_create_autocmd('CursorHoldI', {
-    callback = function()
-      vim.lsp.buf.document_highlight()
+    -- callback = function()
+    --   vim.lsp.buf.document_highlight()
+    -- end,
+    callback = function(args)
+      local all_clients = vim.lsp.get_active_clients()
+      -- print('aaaaaa')
+      for i, val in pairs(all_clients) do
+        if val.server_capabilities.documentHighlightProvider then
+          -- print("True!")
+          vim.lsp.buf.document_highlight()
+        end
+      end
     end,
     group = cursorhighlight_group,
     pattern = '<buffer>',
@@ -99,6 +123,35 @@ local on_attach = function(_, bufnr)
     pattern = '<buffer>',
   })
 
+-- end
+  -- print(vim.inspect(client))
+  -- print(vim.inspect(client.server_capabilities))
+
+  -- print(vim.inspect(client.server_capabilities.documentHighlightProvider))
+
+  -- if  client.server_capabilities.documentHighlightProvider then
+  --   vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+  --   vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
+  --   vim.api.nvim_create_autocmd("CursorHold", {
+  --     callback = vim.lsp.buf.document_highlight,
+  --     -- callback = function(args)
+  --     --   local client2 = vim.lsp.get_client_by_id(args.data.client_id)
+  --     --   print(vim.inspect(client2.server_capabilities))
+  --     --   if client.server_capabilities.documentHighlightProvider then
+  --     --     vim.lsp.buf.document_highlight()
+  --     --   end
+  --     -- end,
+  --     buffer = bufnr,
+  --     group = "lsp_document_highlight",
+  --     desc = "Document Highlight",
+  --   })
+  --   vim.api.nvim_create_autocmd("CursorMoved", {
+  --     callback = vim.lsp.buf.clear_references,
+  --     buffer = bufnr,
+  --     group = "lsp_document_highlight",
+  --     desc = "Clear All the References",
+  --   })
+  -- end
 
 end
 

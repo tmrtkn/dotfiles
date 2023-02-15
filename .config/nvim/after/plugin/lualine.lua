@@ -46,6 +46,13 @@ local conditions = {
   end,
 }
 
+local navic = require("nvim-navic")
+
+local wpm = require("wpm")
+sections = {
+}
+
+
 -- Config
 local config = {
   options = {
@@ -79,6 +86,36 @@ local config = {
     lualine_c = {},
     lualine_x = {},
   },
+  winbar = {
+    -- these are to remove the defaults
+    lualine_a = {},
+    lualine_b = {},
+    lualine_y = {},
+    lualine_z = {},
+    -- These will be filled later
+    lualine_c = {
+      {
+        navic.get_location,
+        -- cond = navic.is_available
+        cond = function()
+          return true
+        end,
+      }
+    },
+    lualine_x = {
+        wpm.wpm,
+        wpm.historic_graph
+	},
+  },
+  inactive_winbar = {
+    -- these are to remove the defaults
+    lualine_a = {},
+    lualine_b = {},
+    lualine_y = {},
+    lualine_z = {},
+    lualine_c = {},
+    lualine_x = {},
+  }
 }
 
 -- Inserts a component in lualine_c at left section
@@ -116,7 +153,7 @@ ins_left {
       no = colors.red,
       s = colors.orange,
       S = colors.orange,
-      [''] = colors.orange,
+      -- [''] = colors.orange,
       ic = colors.yellow,
       R = colors.violet,
       Rv = colors.violet,
@@ -160,6 +197,14 @@ ins_left {
   },
 }
 
+
+-- ins_left {
+--   function ()
+--     return navic.get_location()
+--   end,
+--   cond = navic.is_available
+--
+-- }
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
 ins_left {

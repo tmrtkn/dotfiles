@@ -135,6 +135,22 @@ return require('packer').startup(function(use)
   --   opt = true,
   --   run = "npm install --legacy-peer-depts && npm run compile",
   -- }
+    use {
+      'SmiteshP/nvim-navic',
+      requires = 'neovim/nvim-lspconfig'
+    }
+  -- }
+
+
+
+use {
+    "jcdickinson/wpm.nvim",
+    config = function()
+        require("wpm").setup({
+        })
+    end
+}
+
 
   use { 'shortcuts/no-neck-pain.nvim', tag = "*" }
 

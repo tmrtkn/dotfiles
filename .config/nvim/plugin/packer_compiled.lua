@@ -170,7 +170,6 @@ _G.packer_plugins = {
     url = "https://github.com/folke/neodev.nvim"
   },
   neorg = {
-    config = { "\27LJ\2\2¯\3\0\0\6\0\24\0!6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\22\0005\2\3\0004\3\0\0=\3\4\0024\3\0\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\0025\3\r\0005\4\v\0005\5\n\0=\5\f\4=\4\b\3=\3\14\0025\3\16\0005\4\15\0=\4\b\3=\3\17\0025\3\19\0005\4\18\0=\4\b\3=\3\20\0024\3\0\0=\3\21\2=\2\23\1B\0\2\1K\0\1\0\tload\1\0\0 core.integrations.telescope\18core.keybinds\1\0\0\1\0\1\17neorg_leader\6,\22core.norg.journal\1\0\0\1\0\1\14workspace\nnotes\21core.norg.dirman\1\0\0\15workspaces\1\0\0\1\0\2\twork\17~/notes/work\nnotes\17~/notes/home\25core.norg.completion\vconfig\1\0\0\1\0\1\vengine\rnvim-cmp\24core.norg.concealer\18core.defaults\1\0\0\nsetup\nneorg\frequire\0" },
     loaded = true,
     path = "/home/martikat/.local/share/nvim/site/pack/packer/start/neorg",
     url = "https://github.com/nvim-neorg/neorg"
@@ -215,6 +214,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/martikat/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-navic"] = {
+    loaded = true,
+    path = "/home/martikat/.local/share/nvim/site/pack/packer/start/nvim-navic",
+    url = "https://github.com/SmiteshP/nvim-navic"
   },
   ["nvim-test"] = {
     loaded = true,
@@ -322,26 +326,32 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/martikat/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
+  ["wpm.nvim"] = {
+    config = { "\27LJ\2\0025\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\bwpm\frequire\0" },
+    loaded = true,
+    path = "/home/martikat/.local/share/nvim/site/pack/packer/start/wpm.nvim",
+    url = "https://github.com/jcdickinson/wpm.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: neorg
-time([[Config for neorg]], true)
-try_loadstring("\27LJ\2\2¯\3\0\0\6\0\24\0!6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\22\0005\2\3\0004\3\0\0=\3\4\0024\3\0\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\0025\3\r\0005\4\v\0005\5\n\0=\5\f\4=\4\b\3=\3\14\0025\3\16\0005\4\15\0=\4\b\3=\3\17\0025\3\19\0005\4\18\0=\4\b\3=\3\20\0024\3\0\0=\3\21\2=\2\23\1B\0\2\1K\0\1\0\tload\1\0\0 core.integrations.telescope\18core.keybinds\1\0\0\1\0\1\17neorg_leader\6,\22core.norg.journal\1\0\0\1\0\1\14workspace\nnotes\21core.norg.dirman\1\0\0\15workspaces\1\0\0\1\0\2\twork\17~/notes/work\nnotes\17~/notes/home\25core.norg.completion\vconfig\1\0\0\1\0\1\vengine\rnvim-cmp\24core.norg.concealer\18core.defaults\1\0\0\nsetup\nneorg\frequire\0", "config", "neorg")
-time([[Config for neorg]], false)
--- Config for: trouble.nvim
-time([[Config for trouble.nvim]], true)
-try_loadstring("\27LJ\2\0029\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
-time([[Config for trouble.nvim]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-try_loadstring("\27LJ\2\2@\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
-time([[Config for nvim-autopairs]], false)
 -- Config for: onedark
 time([[Config for onedark]], true)
 try_loadstring("\27LJ\2\0027\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0\24colorscheme onedark\bcmd\bvim\0", "config", "onedark")
 time([[Config for onedark]], false)
+-- Config for: wpm.nvim
+time([[Config for wpm.nvim]], true)
+try_loadstring("\27LJ\2\0025\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\bwpm\frequire\0", "config", "wpm.nvim")
+time([[Config for wpm.nvim]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\2@\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+try_loadstring("\27LJ\2\0029\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time([[Config for trouble.nvim]], false)
 -- Conditional loads
 time([[Conditional loading of telescope-fzf-native.nvim]], true)
   require("packer.load")({"telescope-fzf-native.nvim"}, {}, _G.packer_plugins)
