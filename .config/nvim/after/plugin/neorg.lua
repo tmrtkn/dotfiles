@@ -38,8 +38,10 @@ require('neorg').setup {
     ["core.integrations.telescope"] = {
     },
     ["core.export"] = {
-      export_dir = "notes"
-    }
+      config = {
+        export_dir = "notes"
+      }
+    },
   },
 }
 

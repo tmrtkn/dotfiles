@@ -7,7 +7,7 @@ lsp.ensure_installed({
   'tsserver',
   'eslint',
   -- 'sumneko_lua',
-  'lsp_lua',
+  'lua_ls',
 })
 
 -- Publish the lsp diagnostics virtually, meaning on the line where the issue exists
@@ -167,7 +167,7 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
 
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
