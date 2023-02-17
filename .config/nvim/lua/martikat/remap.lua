@@ -1,4 +1,5 @@
-vim.g.mapleader = " "
+-- Moved the leader setup to the packer.lua, because of lazy.nvim
+-- vim.g.mapleader = " "
 
 -- Own Mappings
 vim.keymap.set("n", "<Leader>q", ":q<Cr>")
