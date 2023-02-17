@@ -100,7 +100,7 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- use('theprimeagen/harpoon')
+  use('theprimeagen/harpoon')
 
   use('mbbill/undotree')
 
@@ -208,9 +208,11 @@ use {
     }
   }
 
+  -- Smarter word motions
+  use 'chaoren/vim-wordmotion'
+
   -- Nvim session saving with tmux
   use 'tpope/vim-obsession'
-
   use 'christoomey/vim-tmux-navigator'
 
   local has_plugins, plugins = pcall(require, 'custom.plugins')
