@@ -1,4 +1,5 @@
-require("martikat")
+require('init')
+require('plugins')
 
-require('leap').add_default_mappings()
+-- require('leap').add_default_mappings()
 

@@ -86,10 +86,10 @@ local on_attach = function(client, bufnr)
     -- end,
     callback = function(args)
       local all_clients = vim.lsp.get_active_clients()
-      -- print('aaaaaa')
+      print('aaaaaa')
       for i, val in pairs(all_clients) do
         if val.server_capabilities.documentHighlightProvider then
-          -- print("True!")
+          print("True!")
           vim.lsp.buf.document_highlight()
         end
       end
@@ -106,7 +106,7 @@ local on_attach = function(client, bufnr)
       -- print('aaaaaa')
       for i, val in pairs(all_clients) do
         if val.server_capabilities.documentHighlightProvider then
-          -- print("True!")
+          print("True!")
           vim.lsp.buf.document_highlight()
         end
       end

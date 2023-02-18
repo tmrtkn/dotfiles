@@ -50,14 +50,7 @@ return {
     },
     tag = 'nightly'
   },
-  --  'navarasu/onedark.nvim', -- Theme inspired by Atom
-  {
-    'navarasu/onedark.nvim', -- Theme inspired by Atom
-    as = 'onedark',
-    config = function()
-      vim.cmd('colorscheme onedark')
-    end
-  },
+  'nvim-lualine/lualine.nvim', -- Fancier statusline
   'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
   'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
@@ -151,4 +144,6 @@ return {
   'tpope/vim-obsession',
   'christoomey/vim-tmux-navigator',
 
+  -- Theme
+  { "catppuccin/nvim", name = "catppuccin" },
 }
