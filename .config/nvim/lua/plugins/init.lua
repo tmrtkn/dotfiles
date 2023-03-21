@@ -103,7 +103,6 @@ return {
   'mfussenegger/nvim-dap',
   'jayp0521/mason-nvim-dap.nvim',
   'rcarriga/nvim-dap-ui',
-  'antoinemadec/FixCursorHold.nvim',
 
   -- 'nvim-neotest/neotest',
   -- 'nvim-neotest/neotest-vim-test',
