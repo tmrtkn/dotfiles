@@ -2,6 +2,16 @@ return {
   -- Additional lua configuration, makes nvim stuff amazing
   'folke/neodev.nvim',
   {
+    "catppuccin/nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- Load the colorscheme here
+      vim.cmd([[colorscheme catppuccin]])
+    end,
+    name = "catppuccin"
+  },
+  {
     'VonHeikemen/lsp-zero.nvim',
     dependencies = {
       -- LSP Support
@@ -145,5 +155,4 @@ return {
   'christoomey/vim-tmux-navigator',
 
   -- Theme
-  { "catppuccin/nvim", name = "catppuccin" },
 }
