@@ -15,13 +15,32 @@ lsp.ensure_installed({
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = true })
 
+local function lsp_highlight_document(client)
+  if client.server_capabilities.documentHighlightProvider then
+    vim.api.nvim_exec([[
+            augroup lsp_document_highlight
+            autocmd! * <buffer>
+            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+            ]],
+      false)
+  end
+end
+
+
+
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
-  --
+
+
+  -- Set cursor hightlighting
+  lsp_highlight_document(client)
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
@@ -76,82 +95,6 @@ local on_attach = function(client, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
 
--- if client.server.capabilities.documentHighlightProvider then
-
-
-  local cursorhighlight_group = vim.api.nvim_create_augroup('CursorHighlight', { clear = true })
-  vim.api.nvim_create_autocmd('CursorHold', {
-    -- callback = function()
-    --   vim.lsp.buf.document_highlight()
-    -- end,
-    callback = function(args)
-      local all_clients = vim.lsp.get_active_clients()
-      -- print('aaaaaa')
-      for i, val in pairs(all_clients) do
-        if val.server_capabilities.documentHighlightProvider then
-          -- print("True!")
-          vim.lsp.buf.document_highlight()
-        end
-      end
-    end,
-    group = cursorhighlight_group,
-    pattern = '<buffer>',
-  })
-  vim.api.nvim_create_autocmd('CursorHoldI', {
-    -- callback = function()
-    --   vim.lsp.buf.document_highlight()
-    -- end,
-    callback = function(args)
-      local all_clients = vim.lsp.get_active_clients()
-      -- print('aaaaaa')
-      for i, val in pairs(all_clients) do
-        if val.server_capabilities.documentHighlightProvider then
-          -- print("True!")
-          vim.lsp.buf.document_highlight()
-        end
-      end
-    end,
-    group = cursorhighlight_group,
-    pattern = '<buffer>',
-  })
-
-  vim.api.nvim_create_autocmd('CursorMoved', {
-    callback = function()
-      vim.lsp.buf.clear_references()
-    end,
-    group = cursorhighlight_group,
-    pattern = '<buffer>',
-  })
-
--- end
-  -- print(vim.inspect(client))
-  -- print(vim.inspect(client.server_capabilities))
-
-  -- print(vim.inspect(client.server_capabilities.documentHighlightProvider))
-
-  -- if  client.server_capabilities.documentHighlightProvider then
-  --   vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-  --   vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
-  --   vim.api.nvim_create_autocmd("CursorHold", {
-  --     callback = vim.lsp.buf.document_highlight,
-  --     -- callback = function(args)
-  --     --   local client2 = vim.lsp.get_client_by_id(args.data.client_id)
-  --     --   print(vim.inspect(client2.server_capabilities))
-  --     --   if client.server_capabilities.documentHighlightProvider then
-  --     --     vim.lsp.buf.document_highlight()
-  --     --   end
-  --     -- end,
-  --     buffer = bufnr,
-  --     group = "lsp_document_highlight",
-  --     desc = "Document Highlight",
-  --   })
-  --   vim.api.nvim_create_autocmd("CursorMoved", {
-  --     callback = vim.lsp.buf.clear_references,
-  --     buffer = bufnr,
-  --     group = "lsp_document_highlight",
-  --     desc = "Clear All the References",
-  --   })
-  -- end
 
 end
 
