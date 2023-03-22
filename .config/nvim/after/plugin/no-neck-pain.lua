@@ -1,11 +1,13 @@
 require("no-neck-pain").setup({
-
-  enableOnVimEnter = false,
+  autocmds = {
+    enableOnVimEnter = false,
+  },
   width = 80,
 
   buffers = {
-    blend = 0.3,
-
+    colors = {
+      blend = 0.3,
+    },
     scratchPad = {
       enabled = true,
       -- fileName = "no-neck-pain-left.norg"
