@@ -11,11 +11,19 @@ vim.keymap.set("n", "<Leader>bd", ":bd<Cr>")
 vim.keymap.set("i", "jk", "<esc>")
 
 -- Split navigations
-vim.keymap.set("n", "<C-j>", "<C-W><C-J>")
+-- vim.keymap.set("n", "<C-j>", "<C-W><C-J>")
+-- -- <C-K> Conflicts with the lsp.lua's same mapping...
+-- vim.keymap.set("n", "<C-k>", "<C-W><C-K>")
+-- vim.keymap.set("n", "<C-l>", "<C-W><C-L>")
+-- vim.keymap.set("n", "<C-h>", "<C-W><C-H>")
+
+-- Use tmux navigations instead. These are needed to be defined here
+-- because Lazy plugin somehow messes These
+vim.keymap.set("n", "<C-j>", ":<C-U>TmuxNavigateDown<CR>", { silent = true })
 -- <C-K> Conflicts with the lsp.lua's same mapping...
-vim.keymap.set("n", "<C-k>", "<C-W><C-K>")
-vim.keymap.set("n", "<C-l>", "<C-W><C-L>")
-vim.keymap.set("n", "<C-h>", "<C-W><C-H>")
+vim.keymap.set("n", "<C-k>", ":<C-U>TmuxNavigateUp<CR>", { silent = true })
+vim.keymap.set("n", "<C-l>", ":<C-U>TmuxNavigateRight<CR>", { silent = true })
+vim.keymap.set("n", "<C-h>", ":<C-U>TmuxNavigateLeft<CR>", { silent = true })
 
 -- Easier way to scroll buffers
 vim.keymap.set("n", "<Home>", ":bprevious<CR>")
