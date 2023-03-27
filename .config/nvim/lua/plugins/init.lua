@@ -133,7 +133,10 @@ return {
   },
 
 
-  { 'shortcuts/no-neck-pain.nvim', tag = "*" },
+  {
+    'shortcuts/no-neck-pain.nvim',
+    version = "*"
+  },
 
   { "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
@@ -151,7 +154,10 @@ return {
 
   -- Nvim session saving with tmux
   'tpope/vim-obsession',
-  'christoomey/vim-tmux-navigator',
+  {
+    'christoomey/vim-tmux-navigator',
+    lazy = false
+  },
 
   -- Theme
 }
