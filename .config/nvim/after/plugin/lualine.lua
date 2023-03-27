@@ -178,7 +178,8 @@ ins_left {
 
 ins_left {
   'filename',
-  cond = conditions.buffer_not_empty,
+  path = 1, -- show relational file path with the filename
+  kcond = conditions.buffer_not_empty,
   color = { fg = colors.magenta, gui = 'bold' },
 }
 
